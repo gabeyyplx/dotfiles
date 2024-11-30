@@ -1,0 +1,65 @@
+{
+	"layer": "top",
+	"modules-left": ["custom/launcher","hyprland/workspaces"],
+	"modules-center": ["clock"],
+	"modules-right": ["tray","cpu","memory","network", "wireplumber"],
+	
+	"wireplumber": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "{icon} {volume}%",
+		"on-click":"pavucontrol",
+        "max-volume": 100,
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": " ",
+        "on-click": "nm-connection-editor"
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock": {
+        "format": " {:%a, %d.%m.%y | %H:%M:%S}",
+        "interval": 1
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "pidof wofi || wofi -I --show drun"
+    }
+}
